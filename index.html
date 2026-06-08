@@ -753,8 +753,36 @@
     // Set registration date
     document.getElementById('regDate').value = new Date().toLocaleString('ar');
 
-    // Google Apps Script URL - Replace with your deployed URL
-    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwC-JIdwHEiDsH1IeNdAy3YAX_cnVqRioNtAYPqGY9e4zlLj9XrL1RKFg1zVREWwSXN/exec';
+    // ========================================
+    // إعدادات JSONBin - تخزين مجاني بدون حساب
+    // ضع هنا المفتاح والـ BIN ID بعد الإنشاء من jsonbin.io
+    // ========================================
+    const JSONBIN_BIN_ID  = '6a26f13fda38895dfe9afa7d';
+    const JSONBIN_API_KEY = '$2a$10$nNkpERV6bc6IpksHCYQAZOnV2PYTAWMEbwOxY9jVXgyRkLr03ykXm';
+    const JSONBIN_URL = `https://api.jsonbin.io/v3/b/${JSONBIN_BIN_ID}`;
+    const JSONBIN_HEADERS = {
+        'Content-Type': 'application/json',
+        'X-Master-Key': JSONBIN_API_KEY,
+        'X-Bin-Private': 'false'
+    };
+
+    async function fetchRegistrations() {
+        const res = await fetch(JSONBIN_URL + '/latest', {
+            headers: { 'X-Master-Key': JSONBIN_API_KEY }
+        });
+        const json = await res.json();
+        return json.record?.registrations || [];
+    }
+
+    async function saveRegistration(newEntry) {
+        const current = await fetchRegistrations();
+        current.push(newEntry);
+        await fetch(JSONBIN_URL, {
+            method: 'PUT',
+            headers: JSONBIN_HEADERS,
+            body: JSON.stringify({ registrations: current })
+        });
+    }
 
     // Form submission
     document.getElementById('registrationForm').addEventListener('submit', async function(e) {
@@ -774,27 +802,14 @@
             meetLink: 'https://meet.google.com/uvb-updz-anc'
         };
         
-        // حفظ محلي كاحتياط
-        let registrations = JSON.parse(localStorage.getItem('geogebra_registrations') || '[]');
-        registrations.push(formData);
-        localStorage.setItem('geogebra_registrations', JSON.stringify(registrations));
-        
-        // إرسال إلى Google Sheets
-        // no-cors لا يُرجع رداً — نعتبر الإرسال ناجحاً بعد 3 ثوانٍ
         try {
-            const controller = new AbortController();
-            const timeout = setTimeout(() => controller.abort(), 8000);
-            await fetch(GOOGLE_SCRIPT_URL, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData),
-                signal: controller.signal
-            });
-            clearTimeout(timeout);
+            await saveRegistration(formData);
         } catch(err) {
-            // no-cors يُلقي خطأ للـ abort لكن الطلب يصل في الغالب
-            if (err.name !== 'AbortError') console.log('تحذير:', err);
+            console.error('خطأ في الحفظ:', err);
+            // احتياط محلي إذا فشل الاتصال
+            const local = JSON.parse(localStorage.getItem('geogebra_registrations') || '[]');
+            local.push(formData);
+            localStorage.setItem('geogebra_registrations', JSON.stringify(local));
         }
         
         submitBtn.disabled = false;
