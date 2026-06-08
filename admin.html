@@ -437,48 +437,48 @@
     let charts = {};
 
     // ========================================
-    // رابط Google Apps Script
+    // إعدادات JSONBin - نفس المفتاح والـ BIN ID في index.html
     // ========================================
-    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwC-JIdwHEiDsH1IeNdAy3YAX_cnVqRioNtAYPqGY9e4zlLj9XrL1RKFg1zVREWwSXN/exec';
+    const JSONBIN_BIN_ID  = '6a26f13fda38895dfe9afa7d';
+    const JSONBIN_API_KEY = '$2a$10$nNkpERV6bc6IpksHCYQAZOnV2PYTAWMEbwOxY9jVXgyRkLr03ykXm';
+    const JSONBIN_URL = `https://api.jsonbin.io/v3/b/${JSONBIN_BIN_ID}`;
+    const JSONBIN_HEADERS = {
+        'Content-Type': 'application/json',
+        'X-Master-Key': JSONBIN_API_KEY,
+        'X-Bin-Private': 'false'
+    };
 
-    // ========================================
-    // تحميل البيانات من Google Sheets
-    // ========================================
     async function loadData() {
         document.getElementById('loadingMessage').style.display = 'block';
         document.getElementById('dataTable').style.display = 'none';
         document.getElementById('noDataMessage').style.display = 'none';
 
         try {
-            const res = await fetch(GOOGLE_SCRIPT_URL, { method: 'GET' });
+            const res = await fetch(JSONBIN_URL + '/latest', {
+                headers: { 'X-Master-Key': JSONBIN_API_KEY }
+            });
             const json = await res.json();
-            if (json.data && Array.isArray(json.data)) {
-                registrationsData = json.data.map((r, i) => ({
-                    ...r,
-                    id: i,
-                    registrationDate: r.registrationDate || new Date().toISOString()
-                }));
-                // حفظ نسخة محلية كاحتياط
-                localStorage.setItem('geogebra_registrations', JSON.stringify(registrationsData));
-            } else {
-                // إذا فشل الاتصال، استخدم النسخة المحلية
-                const saved = localStorage.getItem('geogebra_registrations');
-                registrationsData = saved ? JSON.parse(saved) : [];
-            }
+            registrationsData = (json.record?.registrations || []).map((r, i) => ({ ...r, id: i }));
+            localStorage.setItem('geogebra_registrations', JSON.stringify(registrationsData));
         } catch(e) {
-            console.error('خطأ في جلب البيانات من Google Sheets:', e);
-            // فولباك: البيانات المحلية
+            console.error('خطأ في جلب البيانات:', e);
             const saved = localStorage.getItem('geogebra_registrations');
             registrationsData = saved ? JSON.parse(saved) : [];
         }
         updateDisplay();
     }
 
-    // ========================================
-    // حفظ محلي فقط (البيانات تُحذف من Sheets يدوياً)
-    // ========================================
-    function saveData() {
+    async function saveData() {
         localStorage.setItem('geogebra_registrations', JSON.stringify(registrationsData));
+        try {
+            await fetch(JSONBIN_URL, {
+                method: 'PUT',
+                headers: JSONBIN_HEADERS,
+                body: JSON.stringify({ registrations: registrationsData })
+            });
+        } catch(e) {
+            console.error('خطأ في الحفظ:', e);
+        }
     }
 
     // ========================================
@@ -776,7 +776,7 @@
     // ========================================
     async function refreshData() {
         await loadData();
-        showMessage('تم التحديث', `تم تحديث البيانات بنجاح - عدد المسجلين: ${registrationsData.length}`);
+        showMessage('تم التحديث', `تم تحديث البيانات - عدد المسجلين: ${registrationsData.length}`);
     }
 
     // ========================================
