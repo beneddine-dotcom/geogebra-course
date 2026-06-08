@@ -371,7 +371,7 @@
             border-color: #00b4d8;
         }
 
-        /* Meet Card - Hidden link version */
+        /* Meet Card */
         .meet-card {
             background: linear-gradient(135deg, #1a2a4a, #0a1a3a);
             border-radius: 20px;
@@ -380,26 +380,13 @@
             margin-top: 2rem;
             border: 1px solid #00b4d8;
         }
-        .meet-link-hidden {
-            font-size: 1rem;
-            background: rgba(255, 109, 0, 0.2);
+        .meet-link {
+            font-size: 1.2rem;
+            background: rgba(66, 133, 244, 0.2);
             padding: 1rem;
             border-radius: 10px;
             margin: 1rem 0;
-            color: #ffab40;
-        }
-        .password-input {
-            margin: 1rem 0;
-        }
-        .password-input input {
-            padding: 0.8rem;
-            border-radius: 10px;
-            border: 1px solid #00b4d8;
-            background: rgba(0,0,0,0.3);
-            color: #fff;
-            text-align: center;
-            font-family: inherit;
-            width: 200px;
+            direction: ltr;
         }
 
         /* Contact Grid */
@@ -442,29 +429,6 @@
             width: 90%;
             text-align: center;
             border: 1px solid #00b4d8;
-        }
-
-        /* Password Modal */
-        .password-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 3000;
-            justify-content: center;
-            align-items: center;
-        }
-        .password-modal-content {
-            background: linear-gradient(135deg, #0a0f2a, #0a1a3a);
-            border-radius: 20px;
-            padding: 2rem;
-            max-width: 400px;
-            width: 90%;
-            text-align: center;
-            border: 2px solid #00b4d8;
         }
 
         /* Footer */
@@ -537,7 +501,7 @@
 <!-- Hero Section -->
 <section id="home" class="hero">
     <div class="hero-content" data-aos="fade-up">
-        <div class="hero-badge"><i class="fas fa-crown"></i>  دورة جيوجبرا في الجزائر - عدد المقاعد محدود</div>
+        <div class="hero-badge"><i class="fas fa-crown"></i> دورة معتمدة - عدد المقاعد محدود</div>
         <h1>تعلم GeoGebra من الصفر<br>إلى الاحتراف</h1>
         <p>برنامج رياضي ديناميكي يجمع بين الهندسة والجبر وجداول البيانات والرسوم البيانية في برنامج واحد</p>
         
@@ -553,7 +517,7 @@
         
         <div>
             <a href="#register" class="btn btn-primary"><i class="fas fa-user-plus"></i> سجل الآن</a>
-            <button onclick="showPasswordModal()" class="btn btn-google"><i class="fab fa-google"></i> انضم إلى Google Meet</button>
+            <a href="#meet" class="btn btn-google"><i class="fab fa-google"></i> انضم إلى Google Meet</a>
         </div>
     </div>
 </section>
@@ -570,7 +534,7 @@
                 <p>خبير في توظيف GeoGebra في التعليم الرياضي، ومؤلف أول كتاب عربي شامل لتعلم GeoGebra من الصفر إلى الاحتراف.</p>
                 <p>يحتوي الكتاب على أكثر من 15 فصلاً تغطي جميع جوانب البرنامج مع أمثلة تطبيقية ومشاريع تفاعلية.</p>
                 <div style="margin-top: 1rem;">
-                    <i class="fab fa-whatsapp" style="color:#25D366;"></i> 0665636170
+                    <i class="fab fa-whatsapp" style="color:#25D366;"></i> 0558474456
                     <i class="fas fa-envelope" style="color:#00b4d8; margin-right:1rem;"></i> inpsbeneddine2@gmail.com
                 </div>
             </div>
@@ -587,7 +551,7 @@
             <div class="feature-card" data-aos="fade-up" data-aos-delay="100"><div class="feature-icon"><i class="fas fa-cubes"></i></div><h3>إمكانات متعددة</h3><p>الهندسة، الدوال، حساب التفاضل والتكامل، الجبر، الإحصاء والاحتمالات.</p></div>
             <div class="feature-card" data-aos="fade-up" data-aos-delay="200"><div class="feature-icon"><i class="fas fa-laptop-code"></i></div><h3>منصة عالمية</h3><p>أكثر من مليون ملف مورد تم إنشاؤها من خلال مجتمعنا متعدد اللغات.</p></div>
             <div class="feature-card" data-aos="fade-up" data-aos-delay="300"><div class="feature-icon"><i class="fas fa-mobile-alt"></i></div><h3>منصات متعددة</h3><p>يعمل على Windows، Mac، Linux، iOS، Android، ونسخة الويب.</p></div>
-            <div class="feature-card" data-aos="fade-up" data-aos-delay="400"><div class="feature-icon"><i class="fas fa-clock"></i></div><h3>دورة مكثفة</h3><p>أسبوع واحد - 21:00 مساءً - تاريخ البدء: 13 جوان 2026</p></div>
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="400"><div class="feature-icon"><i class="fas fa-clock"></i></div><h3>دورة مكثفة</h3><p>أسبوع واحد - 21:00 مساءً - تاريخ البدء: 11 جوان 2026</p></div>
             <div class="feature-card" data-aos="fade-up" data-aos-delay="500"><div class="feature-icon"><i class="fas fa-tag"></i></div><h3>سعر خاص</h3><p>1500 دج فقط للدورة كاملة</p></div>
         </div>
     </div>
@@ -632,22 +596,18 @@
     </div>
 </section>
 
-<!-- Google Meet Section - Hidden link version -->
+<!-- Google Meet Section -->
 <section id="meet">
     <div class="container">
         <div class="meet-card" data-aos="fade-up">
             <i class="fab fa-google" style="font-size: 3rem; color: #4285F4;"></i>
-            <h2>جلسات Google Meet</h2>
-            <div class="meet-link-hidden">
-                <i class="fas fa-lock"></i> رابط الدورة محمي بكلمة مرور
+            <h2>انضم إلى جلسة Google Meet</h2>
+            <p>سوف تنعقد الدورة عبر Google Meet. اضغط على الرابط أدناه للانضمام في موعد الدورة:</p>
+            <div class="meet-link">
+                <i class="fas fa-link"></i> <strong>https://meet.google.com/uvb-updz-anc</strong>
             </div>
-            <p style="color: #00e5ff;">🔑 سيتم إرسال كلمة المرور عبر واتساب بعد التسجيل</p>
-            <p style="color: #ffab40; font-size: 0.9rem; margin-top: 0.5rem;">
-                <i class="fab fa-whatsapp"></i> كلمة المرور: <strong>.......</strong> (سيتم إرسالها عبر واتساب)
-            </p>
-            <button onclick="showPasswordModal()" class="btn btn-google" style="margin-top: 1rem;">
-                <i class="fab fa-google"></i> أدخل كلمة المرور للدخول
-            </button>
+            <p style="color: #ffab40;">⚠️ ملاحظة: سيتم إرسال كلمة المرور عبر واتساب من المدرب بعد التسجيل</p>
+            <a href="https://meet.google.com/uvb-updz-anc" target="_blank" class="btn btn-google"><i class="fab fa-google"></i> انضم إلى الاجتماع</a>
         </div>
     </div>
 </section>
@@ -706,7 +666,7 @@
                 </button>
             </form>
             <p style="text-align: center; margin-top: 1rem; font-size: 0.8rem;">
-                <i class="fas fa-lock"></i>   سيتم إرسال تفاصيل الدورة إلى واتساب الخاص بك
+                <i class="fas fa-lock"></i> بياناتك آمنة وسيتم إرسال تفاصيل الدورة إلى واتساب الخاص بك
             </p>
         </div>
     </div>
@@ -717,9 +677,9 @@
     <div class="container">
         <h2 class="section-title" data-aos="fade-up">تواصل مع المدرب</h2>
         <div class="contact-grid">
-            <a href="tel:0665636170" class="contact-card"><div class="contact-icon"><i class="fas fa-phone-alt"></i></div><h3>اتصال هاتفي</h3><p>0665 63 61 70</p></a>
+            <a href="tel:0558474456" class="contact-card"><div class="contact-icon"><i class="fas fa-phone-alt"></i></div><h3>اتصال هاتفي</h3><p>0558 47 44 56</p></a>
             <a href="mailto:inpsbeneddine2@gmail.com" class="contact-card"><div class="contact-icon"><i class="fas fa-envelope"></i></div><h3>البريد الإلكتروني</h3><p>inpsbeneddine2@gmail.com</p></a>
-            <a href="https://wa.me/213665636170" target="_blank" class="contact-card"><div class="contact-icon"><i class="fab fa-whatsapp"></i></div><h3>واتساب</h3><p>انقر للتواصل المباشر</p></a>
+            <a href="https://wa.me/213558474456" target="_blank" class="contact-card"><div class="contact-icon"><i class="fab fa-whatsapp"></i></div><h3>واتساب</h3><p>انقر للتواصل المباشر</p></a>
             <a href="https://beneddine-dotcom.github.io/geoma/" target="_blank" class="contact-card"><div class="contact-icon"><i class="fas fa-globe"></i></div><h3>موارد GeoGebra</h3><p>لمزيد من الأمثلة والموارد</p></a>
         </div>
     </div>
@@ -740,40 +700,16 @@
         <i class="fas fa-check-circle" style="font-size: 4rem; color: #00c853;"></i>
         <h2 style="margin: 1rem 0;">تم التسجيل بنجاح! 🎉</h2>
         <p>شكراً لتسجيلك في دورة GeoGebra مع المدرب <strong>بن الدين بويعقوب</strong>.</p>
-        <p>🔑 <strong>كلمة المرور للدورة: .........</strong></p>
-        <p>سيتم إرسال كلمة المرور أيضاً إلى <strong>واتساب</strong> الخاص بك لتأكيد التسجيل.</p>
-        <p><i class="fab fa-google"></i> تاريخ البدء: <strong>13 جوان 2026</strong> الساعة <strong>21:00</strong></p>
-        <p style="color: #ffab40;">⚠️ للحصول على رابط الدورة، اضغط على زر "انضم إلى Google Meet" وأدخل كلمة المرور</p>
+        <p>سيتم إرسال كلمة المرور الخاصة بـ Google Meet إلى <strong>واتساب</strong> الخاص بك خلال 24 ساعة.</p>
+        <p><i class="fab fa-google"></i> رابط الدورة: <strong>https://meet.google.com/uvb-updz-anc</strong></p>
+        <p>تاريخ البدء: <strong>11 جوان 2026</strong> الساعة <strong>21:00</strong></p>
         <button class="btn btn-primary" onclick="closeModal()" style="margin-top: 1rem;">حسناً</button>
-    </div>
-</div>
-
-<!-- Password Modal -->
-<div id="passwordModal" class="password-modal">
-    <div class="password-modal-content">
-        <i class="fas fa-key" style="font-size: 3rem; color: #00b4d8;"></i>
-        <h2 style="margin: 1rem 0;">أدخل كلمة المرور</h2>
-        <p>للانضمام إلى جلسة Google Meet</p>
-        <div class="password-input">
-            <input type="password" id="meetPasswordInput" placeholder="********" style="width: 100%;">
-        </div>
-        <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 1rem;">
-            <button class="btn btn-success" onclick="checkPassword()">تأكيد</button>
-            <button class="btn btn-outline" onclick="closePasswordModal()">إلغاء</button>
-        </div>
-        <p style="margin-top: 1rem; font-size: 0.8rem; color: #ccd6f6;">
-            <i class="fab fa-whatsapp"></i> كلمة المرور: <strong>geogebra2026</strong>
-        </p>
     </div>
 </div>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
     AOS.init({ duration: 1000, once: true });
-
-    // كلمة المرور الصحيحة
-    const CORRECT_PASSWORD = 'geogebra2026';
-    const MEET_LINK = 'https://meet.google.com/uvb-updz-anc';
 
     // Particles
     function createParticles() {
@@ -801,9 +737,9 @@
         document.getElementById('navLinks').classList.toggle('active');
     });
 
-    // Countdown - تاريخ 13 جوان 2026
+    // Countdown
     function updateCountdown() {
-        const target = new Date('June 13, 2026 21:00:00 GMT+0100').getTime();
+        const target = new Date('June 11, 2026 21:00:00 GMT+0100').getTime();
         const now = new Date().getTime();
         const d = target - now;
         document.getElementById('days').innerHTML = String(Math.floor(d / (1000*60*60*24))).padStart(2,'0');
@@ -817,13 +753,17 @@
     // Set registration date
     document.getElementById('regDate').value = new Date().toLocaleString('ar');
 
-    // Google Apps Script URL
+    // Google Apps Script URL - Replace with your deployed URL
     const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwC-JIdwHEiDsH1IeNdAy3YAX_cnVqRioNtAYPqGY9e4zlLj9XrL1RKFg1zVREWwSXN/exec';
 
     // Form submission
     document.getElementById('registrationForm').addEventListener('submit', async function(e) {
         e.preventDefault();
         
+        const submitBtn = this.querySelector('button[type="submit"]');
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الإرسال...';
+
         const formData = {
             fullname: document.getElementById('fullname').value,
             email: document.getElementById('email').value,
@@ -831,25 +771,34 @@
             whatsapp: document.getElementById('whatsapp').value,
             registrationDate: new Date().toISOString(),
             courseDate: '2026-06-13',
-            meetLink: MEET_LINK,
-            password: CORRECT_PASSWORD
+            meetLink: 'https://meet.google.com/uvb-updz-anc'
         };
         
-        // Save to localStorage
+        // حفظ محلي كاحتياط
         let registrations = JSON.parse(localStorage.getItem('geogebra_registrations') || '[]');
         registrations.push(formData);
         localStorage.setItem('geogebra_registrations', JSON.stringify(registrations));
         
-        // Send to Google Sheets
+        // إرسال إلى Google Sheets
+        // no-cors لا يُرجع رداً — نعتبر الإرسال ناجحاً بعد 3 ثوانٍ
         try {
-            const response = await fetch(GOOGLE_SCRIPT_URL, {
+            const controller = new AbortController();
+            const timeout = setTimeout(() => controller.abort(), 8000);
+            await fetch(GOOGLE_SCRIPT_URL, {
                 method: 'POST',
                 mode: 'no-cors',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData)
+                body: JSON.stringify(formData),
+                signal: controller.signal
             });
-        } catch(e) { console.log('Error sending to Google Sheets:', e); }
+            clearTimeout(timeout);
+        } catch(err) {
+            // no-cors يُلقي خطأ للـ abort لكن الطلب يصل في الغالب
+            if (err.name !== 'AbortError') console.log('تحذير:', err);
+        }
         
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> تسجيل والمشاركة';
         document.getElementById('successModal').style.display = 'flex';
         this.reset();
         document.getElementById('regDate').value = new Date().toLocaleString('ar');
@@ -859,37 +808,6 @@
         document.getElementById('successModal').style.display = 'none';
     }
     window.closeModal = closeModal;
-
-    // Password modal functions
-    function showPasswordModal() {
-        document.getElementById('passwordModal').style.display = 'flex';
-    }
-    window.showPasswordModal = showPasswordModal;
-
-    function closePasswordModal() {
-        document.getElementById('passwordModal').style.display = 'none';
-        document.getElementById('meetPasswordInput').value = '';
-    }
-    window.closePasswordModal = closePasswordModal;
-
-    function checkPassword() {
-        const enteredPassword = document.getElementById('meetPasswordInput').value;
-        if (enteredPassword === CORRECT_PASSWORD) {
-            // فتح رابط Google Meet في نافذة جديدة
-            window.open(MEET_LINK, '_blank');
-            closePasswordModal();
-        } else {
-            alert('❌ كلمة المرور غير صحيحة!\n\nللتذكير: كلمة المرور هي: geogebra2026');
-        }
-    }
-    window.checkPassword = checkPassword;
-
-    // Enter key in password input
-    document.getElementById('meetPasswordInput').addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            checkPassword();
-        }
-    });
 
     // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
